@@ -1451,3 +1451,7 @@ html[data-theme="dark"] .promo .promo-link {
         center 32% / cover no-repeat !important;
   }
 }
+
+html[data-theme="dark"] .promo {
+  filter: brightness(.88);
+}
