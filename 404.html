@@ -3,480 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="theme-color" content="#071b2b">
 
   <title>Stránka sa nenašla · PARK SNOW Donovaly</title>
 
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-  >
-
-  <link
-    rel="stylesheet"
-    href="https://use.typekit.net/fjd7ksp.css"
-  >
-
-  <script>
-    (() => {
-      const modes = ["system", "light", "dark"];
-      const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-      let mode = "system";
-
-      try {
-        const saved = localStorage.getItem("yeti-theme");
-
-        if (modes.includes(saved)) {
-          mode = saved;
-        }
-      } catch {}
-
-      const resolved = mode === "system"
-        ? (media.matches ? "dark" : "light")
-        : mode;
-
-      document.documentElement.dataset.theme = resolved;
-      document.documentElement.style.colorScheme = resolved;
-    })();
-  </script>
+  <link rel="stylesheet" href="https://use.typekit.net/fjd7ksp.css">
 
   <style>
     :root {
-      --navy: #052e50;
+      --navy: #071b2b;
+      --panel: #0b3557;
       --cyan: #08b8ee;
-
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --ice: #eff8fc;
-      --ink: #052e50;
-      --muted: #526b7c;
-      --line: #dce8ee;
-
-      --heading:
-        "neulis-cursive",
-        "Space Grotesk",
-        sans-serif;
-
-      --body:
-        "Space Grotesk",
-        sans-serif;
-    }
-
-    html[data-theme="dark"] {
-      --bg: #071b2b;
-      --surface: #0c2234;
-      --ice: #102c40;
-      --ink: #f1f7fb;
+      --white: #f1f7fb;
       --muted: #afc3d2;
-      --line: #2b4559;
+      --heading: "neulis-cursive", "Space Grotesk", sans-serif;
+      --body: "Space Grotesk", sans-serif;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      min-height: 100%;
-    }
-
     body {
       min-height: 100svh;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--navy);
+      color: var(--white);
       font-family: var(--body);
     }
 
-    a {
-      color: inherit;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--cyan);
-      outline-offset: 4px;
-    }
-
-    .page {
-      width: min(760px, calc(100% - 48px));
-      margin-inline: auto;
-    }
-
-    .site-header {
-      min-height: 130px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .brand img {
-      display: block;
-      width: 185px;
-      height: 72px;
-      object-fit: contain;
-    }
-
-    .brand-fallback {
-      display: none;
-      line-height: 1.05;
-    }
-
-    .brand-fallback small,
-    .brand-fallback strong {
-      display: block;
-    }
-
-    .brand-fallback small {
-      color: var(--cyan);
-      font-size: 10px;
-      letter-spacing: .12em;
-    }
-
-    .brand-fallback strong {
-      font-family: var(--heading);
-      font-size: 28px;
-    }
-
-    .header-label {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .16em;
-    }
-
-    .content {
-      flex: 1;
-      display: grid;
-      align-items: center;
-      padding: 20px 0 50px;
-    }
-
-    .error-card {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(34px, 6vw, 58px);
-      border: 1px solid var(--line);
+    main {
+      width: min(680px, 100%);
+      padding: clamp(36px, 7vw, 70px);
+      border: 1px solid #2b4559;
       border-radius: 30px;
-      background: var(--surface);
+      background: var(--panel);
     }
 
-    html[data-theme="dark"] .error-card {
-      background: var(--navy);
-    }
-
-    .error-code {
-      position: relative;
-      z-index: 1;
+    .code {
       margin: 0 0 18px;
       color: var(--cyan);
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: .16em;
     }
 
     h1 {
-      position: relative;
-      z-index: 1;
-      max-width: 500px;
       margin: 0;
       color: var(--cyan);
       font-family: var(--heading);
-      font-size: clamp(40px, 7vw, 66px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -.035em;
-    }
-
-    .description {
-      position: relative;
-      z-index: 1;
-      max-width: 460px;
-      margin: 24px 0 30px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    html[data-theme="dark"] .description {
-      color: #d4e2eb;
-    }
-
-    .home-button {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      min-height: 50px;
-      padding: 12px 20px;
-      border-radius: 14px;
-      background: var(--cyan);
-      color: var(--navy);
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .home-button:hover {
-      background: #70dcfa;
-    }
-
-    .button-arrow {
-      font-size: 21px;
+      font-size: clamp(45px, 9vw, 82px);
       line-height: 1;
     }
 
-    .error-star {
-      position: absolute;
-      right: -30px;
-      bottom: -35px;
-      width: 190px;
-      height: 190px;
-      color: var(--cyan);
-      opacity: .08;
-      pointer-events: none;
-    }
-
-    .error-star path {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 6;
-      stroke-linecap: round;
-    }
-
-    .site-footer {
-      min-height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-top: 1px solid var(--line);
+    p {
+      margin: 22px 0 30px;
       color: var(--muted);
-      font-size: 9px;
-      font-weight: 600;
+      font-size: 18px;
     }
 
-    .site-footer span:last-child {
+    a {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 14px;
+      background: var(--cyan);
+      color: #052e50;
       font-weight: 700;
-      letter-spacing: .14em;
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        width: calc(100% - 32px);
-      }
-
-      .site-header {
-        min-height: 100px;
-      }
-
-      .brand img {
-        width: 145px;
-        height: 58px;
-      }
-
-      .header-label {
-        display: none;
-      }
-
-      .content {
-        align-items: start;
-        padding-top: 10px;
-      }
-
-      .error-card {
-        padding: 32px 26px;
-        border-radius: 24px;
-      }
-
-      h1 {
-        max-width: 340px;
-        font-size: clamp(40px, 13vw, 55px);
-      }
-
-      .description {
-        max-width: 320px;
-        font-size: 14px;
-      }
-
-      .error-star {
-        right: -45px;
-        bottom: -40px;
-        width: 155px;
-        height: 155px;
-      }
-
-      .site-footer {
-        min-height: 100px;
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px;
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .home-button {
-        transition:
-          background-color .15s ease,
-          transform .15s ease;
-      }
-
-      .home-button:hover {
-        transform: translateY(-2px);
-      }
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header page">
-    <a
-      id="brand-link"
-      class="brand"
-      href="/"
-      aria-label="PARK SNOW Donovaly – úvod"
-    >
-      <img
-        id="error-logo"
-        src=""
-        alt="PARK SNOW Donovaly"
-      >
+  <main>
+    <p class="code">CHYBA 404</p>
 
-      <span
-        id="brand-fallback"
-        class="brand-fallback"
-      >
-        <small>PARK SNOW</small>
-        <strong>Donovaly</strong>
-      </span>
+    <h1>Toto menu sme nenašli.</h1>
+
+    <p>
+      Odkaz už nemusí byť platný alebo bola adresa napísaná nesprávne.
+    </p>
+
+    <a id="home-link" href="/">
+      Späť na výber prevádzky →
     </a>
-
-    <span class="header-label">
-      NAŠE MENU
-    </span>
-  </header>
-
-  <main class="content page">
-    <section
-      class="error-card"
-      aria-labelledby="error-title"
-    >
-      <p class="error-code">
-        CHYBA 404 · MENU
-      </p>
-
-      <h1 id="error-title">
-        Toto menu sme nenašli.
-      </h1>
-
-      <p class="description">
-        Odkaz už nemusí byť platný alebo bola adresa
-        napísaná nesprávne.
-      </p>
-
-      <a
-        id="home-link"
-        class="home-button"
-        href="/"
-      >
-        Späť na výber prevádzky
-
-        <span
-          class="button-arrow"
-          aria-hidden="true"
-        >
-          →
-        </span>
-      </a>
-
-      <svg
-        class="error-star"
-        viewBox="0 0 100 100"
-        aria-hidden="true"
-      >
-        <path
-          d="
-            M50 5V95
-            M5 50H95
-            M18 18L82 82
-            M82 18L18 82
-          "
-        />
-      </svg>
-    </section>
   </main>
 
-  <footer class="site-footer page">
-    <span>
-      © <span id="year"></span> PARK SNOW Donovaly
-    </span>
-
-    <span>DOBRÚ CHUŤ!</span>
-  </footer>
-
   <script>
-    (() => {
-      /*
-        Ak sa repozitár volá napríklad parksnow-menu,
-        napíš sem "parksnow-menu".
-      */
-      const repositoryName = "NAZOV-REPOZITARA";
+    const repositoryName = "NAZOV-REPOZITARA";
 
-      const isGitHubPages =
-        location.hostname.endsWith(".github.io");
+    const home = location.hostname.endsWith(".github.io")
+      ? "/" + repositoryName + "/"
+      : "/";
 
-      const home = isGitHubPages
-        ? "/" + repositoryName + "/"
-        : "/";
-
-      const dark =
-        document.documentElement.dataset.theme === "dark";
-
-      const logo = dark
-        ? "assets/parksnow-logo-dark.svg"
-        : "assets/parksnow-logo.svg";
-
-      const brandLink =
-        document.getElementById("brand-link");
-
-      const homeLink =
-        document.getElementById("home-link");
-
-      const logoImage =
-        document.getElementById("error-logo");
-
-      const fallback =
-        document.getElementById("brand-fallback");
-
-      brandLink.href = home;
-      homeLink.href = home;
-      logoImage.src = home + logo;
-
-      logoImage.addEventListener("load", () => {
-        logoImage.hidden = false;
-        fallback.hidden = true;
-      });
-
-      logoImage.addEventListener("error", () => {
-        logoImage.hidden = true;
-        fallback.style.display = "block";
-      });
-
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
-    })();
+    document.getElementById("home-link").href = home;
   </script>
 </body>
 </html>
