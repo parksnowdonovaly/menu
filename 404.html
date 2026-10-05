@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b2b">
+
+  <title>Stránka sa nenašla · PARK SNOW Donovaly</title>
+
+  <link rel="stylesheet" href="https://use.typekit.net/fjd7ksp.css">
+
+  <style>
+    :root {
+      --navy: #071b2b;
+      --panel: #0b3557;
+      --cyan: #08b8ee;
+      --white: #f1f7fb;
+      --muted: #afc3d2;
+      --heading: "neulis-cursive", "Space Grotesk", sans-serif;
+      --body: "Space Grotesk", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--body);
+    }
+
+    main {
+      width: min(680px, 100%);
+      padding: clamp(36px, 7vw, 70px);
+      border: 1px solid #2b4559;
+      border-radius: 30px;
+      background: var(--panel);
+    }
+
+    .code {
+      margin: 0 0 18px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--cyan);
+      font-family: var(--heading);
+      font-size: clamp(45px, 9vw, 82px);
+      line-height: 1;
+    }
+
+    p {
+      margin: 22px 0 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    a {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 14px;
+      background: var(--cyan);
+      color: #052e50;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="code">CHYBA 404</p>
+
+    <h1>Toto menu sme nenašli.</h1>
+
+    <p>
+      Odkaz už nemusí byť platný alebo bola adresa napísaná nesprávne.
+    </p>
+
+    <a id="home-link" href="/">
+      Späť na výber prevádzky →
+    </a>
+  </main>
+
+  <script>
+    const repositoryName = "menu";
+
+    const home = location.hostname.endsWith(".github.io")
+      ? "/" + repositoryName + "/"
+      : "/";
+
+    document.getElementById("home-link").href = home;
+  </script>
+</body>
+</html>
